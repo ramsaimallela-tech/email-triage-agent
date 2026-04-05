@@ -74,5 +74,6 @@ with gr.Blocks(title="Email Triage Agent", theme=gr.themes.Soft()) as app:
         test_out = gr.Textbox(label="Agent Decision", lines=6)
         test_btn.click(test_single_email, [in_sub, in_body, in_sender], test_out)
 
-if __name__ == "__main__":
-    app.launch()
+# For local testing, uncomment:
+# if __name__ == "__main__":
+#     app.launch()

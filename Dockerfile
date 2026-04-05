@@ -20,5 +20,5 @@ COPY . .
 EXPOSE 7860
 ENV GRADIO_SERVER_NAME="0.0.0.0"
 
-# Start both API and Gradio using a small script
-CMD ["sh", "-c", "python api.py & python app.py"]
+# Start the unified API + UI server
+CMD ["python", "api.py"]
