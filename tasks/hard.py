@@ -175,18 +175,18 @@ HARD_EMAILS = [
     ),
     Email(
         email_id=212,
-        subject="Reminder: Health insurance enrollment ends Friday",
-        email_text="This is a reminder that open enrollment for health insurance "
+        subject="Reminder: Health insurance enrolment ends Friday",
+        email_text="This is a reminder that open enrolment for health insurance "
                    "closes this Friday at 5 PM. If you haven't made your selection, "
                    "please log in to the benefits portal. Changes made after the "
-                   "deadline will not take effect until the next enrollment period.",
+                   "deadline will not take effect until the next enrolment period.",
         sender="benefits@company.com",
         timestamp="2026-03-31T08:00:00Z",
         has_attachments=False,
         thread_length=1,
         true_category="normal",
         true_priority=2,
-        expected_reply_keywords=["enrollment", "benefits"],
+        expected_reply_keywords=["enrolment", "benefits"],
     ),
 ]
 

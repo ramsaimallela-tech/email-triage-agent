@@ -94,7 +94,7 @@ MEDIUM_EMAILS = [
         subject="Congratulations! You've been pre-approved",
         email_text="Based on your profile, you've been pre-approved for our "
                    "platinum credit card with 0% APR for 12 months. No annual fee. "
-                   "Apply now — this offer is personalized for you.",
+                   "Apply now — this offer is personalised for you.",
         sender="offers@creditcard-deals.com",
         timestamp="2026-03-31T07:00:00Z",
         has_attachments=False,
