@@ -4,3 +4,6 @@ PyYAML
 typing-extensions
 openai
 opencv-python-headless
+fastapi
+uvicorn
+gradio

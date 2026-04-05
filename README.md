@@ -1,9 +1,9 @@
 ---
 title: Email Triage Agent
-emoji: 📩
+emoji: 📧
 colorFrom: blue
-colorTo: green
-sdk: gradio
+colorTo: indigo
+sdk: docker
 pinned: false
 ---
 
