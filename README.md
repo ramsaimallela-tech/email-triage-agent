@@ -4,7 +4,6 @@ emoji: 📩
 colorFrom: blue
 colorTo: green
 sdk: gradio
-sdk_version: 4.36.1
 pinned: false
 ---
 
