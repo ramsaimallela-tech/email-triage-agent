@@ -6,4 +6,4 @@ openai
 opencv-python-headless
 fastapi
 uvicorn
-gradio==4.25.0
+gradio>=4.30.0
