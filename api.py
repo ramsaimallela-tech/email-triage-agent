@@ -65,6 +65,10 @@ async def health():
 # Mount Gradio UI
 app = gr.mount_gradio_app(api_app, demo, path="/")
 
-if __name__ == "__main__":
+def serve():
+    """Entry point for multi-mode deployment via [project.scripts]."""
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    serve()
