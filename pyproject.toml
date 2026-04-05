@@ -17,7 +17,9 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "gradio>=4.30.0",
+    "openenv-core>=0.2.0",
 ]
 
 [project.scripts]
 run-agent = "inference:main"
+server = "api:app"
