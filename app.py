@@ -23,7 +23,7 @@ def run_evaluation(difficulty: str, num_episodes: int, random_seed: int):
     report = evaluator.run()
     return json.dumps(report["aggregate"], indent=2)
 
-def test_single_email(sub: str, body: str, from_addr: str):
+def triage_manual(sub: str, body: str, from_addr: str):
     """Test the agent's logic on a single custom email."""
     from env.models import Email, Observation
 
@@ -47,9 +47,22 @@ def test_single_email(sub: str, body: str, from_addr: str):
         f"Draft Reply:\n{decision.reply if decision.reply else '(No reply drafted)'}"
     )
 
+# -- OpenEnv REST API Integration --
+from fastapi import HTTPException
+from pydantic import BaseModel
+from env.models import Action
+
+# Shared env instance for API
+api_env = EmailEnv(ALL_CONFIGS["easy"], seed=42)
+
+class StepRequest(BaseModel):
+    category: str
+    priority: int
+    reply: str
+
 # -- UI Definition --
 
-with gr.Blocks(title="Email Triage Agent", theme=gr.themes.Soft()) as app:
+with gr.Blocks(title="Email Triage Agent", theme=gr.themes.Soft()) as demo:
     gr.Markdown("# Email Triage Agent — OpenEnv Dashboard")
     
     with gr.Tab("Evaluation Runner"):
@@ -72,8 +85,40 @@ with gr.Blocks(title="Email Triage Agent", theme=gr.themes.Soft()) as app:
         
         test_btn = gr.Button("Triage Now", variant="primary")
         test_out = gr.Textbox(label="Agent Decision", lines=6)
-        test_btn.click(test_single_email, [in_sub, in_body, in_sender], test_out)
+        test_btn.click(triage_manual, [in_sub, in_body, in_sender], test_out)
 
-# For local testing, uncomment:
-# if __name__ == "__main__":
-#     app.launch()
+# Inject OpenEnv endpoints into the Gradio FastAPI app
+@demo.app.post("/reset")
+async def reset_env():
+    try:
+        obs = api_env.reset()
+        return {
+            "observation": {
+                "timestep": obs.timestep,
+                "email": obs.email.model_dump(),
+                "emails_remaining": obs.emails_remaining
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@demo.app.post("/step")
+async def step_env(req: StepRequest):
+    try:
+        action = Action(category=req.category, priority=req.priority, reply=req.reply)
+        obs, reward, done, info = api_env.step(action)
+        return {
+            "observation": {
+                "timestep": obs.timestep,
+                "email": obs.email.model_dump(),
+                "emails_remaining": obs.emails_remaining
+            },
+            "reward": reward,
+            "done": done,
+            "info": info
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    demo.launch()
