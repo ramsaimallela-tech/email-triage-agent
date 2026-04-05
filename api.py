@@ -1,16 +1,16 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 import os
 import sys
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 import gradio as gr
-from app import app as demo
 
-# Ensure imports work
-sys.path.insert(0, os.path.dirname(__file__))
+# Ensure imports work from current directory
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 from env.environment import EmailEnv
 from env.models import Action
 from tasks import ALL_CONFIGS
+from app import app as demo
 
 api_app = FastAPI(title="OpenEnv Triage API")
 
