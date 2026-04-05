@@ -1,0 +1,8 @@
+# Core dependencies — pinned for reproducibility
+pydantic==2.7.4
+numpy==1.26.4
+PyYAML==6.0.1
+typing-extensions==4.12.2
+
+# Gradio for Hugging Face Spaces UI
+gradio==4.36.1
