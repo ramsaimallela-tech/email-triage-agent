@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 from env.environment import EmailEnv
 from env.models import Action
 from tasks import ALL_CONFIGS
-from app import app as demo
+from app import demo
 
 api_app = FastAPI(title="OpenEnv Triage API")
 
