@@ -3,7 +3,7 @@ numpy<2.0.0
 PyYAML
 typing-extensions
 openai
-opencv-python-headless
+opencv-python-headless==4.8.0.74
 fastapi
 uvicorn
 gradio==4.25.0
