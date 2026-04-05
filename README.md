@@ -1,3 +1,12 @@
+---
+title: Email Triage Agent
+emoji: 📩
+colorFrom: blue
+colorTo: green
+sdk: gradio
+pinned: false
+---
+
 # Email Triage Agent — OpenEnv Agent Project
 
 [![OpenEnv Compatible](https://img.shields.io/badge/OpenEnv-1.0-blue)](openenv.yaml)
