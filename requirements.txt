@@ -1,9 +1,9 @@
 pydantic
-numpy<2.0.0
+numpy
 PyYAML
 typing-extensions
 openai
-opencv-python-headless==4.8.0.74
+opencv-python-headless
 fastapi
 uvicorn
 gradio==4.25.0
