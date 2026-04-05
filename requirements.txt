@@ -1,9 +1,9 @@
 pydantic
-numpy
+numpy<2.0.0
 PyYAML
 typing-extensions
 openai
 opencv-python-headless
 fastapi
 uvicorn
-gradio
+gradio==4.25.0
