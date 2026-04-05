@@ -22,4 +22,4 @@ dependencies = [
 
 [project.scripts]
 run-agent = "inference:main"
-server = "api:serve"
+server = "server.app:main"
