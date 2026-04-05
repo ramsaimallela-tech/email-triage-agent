@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "email-triage-agent"
+version = "1.0.0"
+description = "An OpenEnv-compatible email triage agent environment."
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic",
+    "numpy",
+    "PyYAML",
+    "typing-extensions",
+    "openai",
+    "opencv-python-headless",
+    "fastapi",
+    "uvicorn",
+    "gradio>=4.30.0",
+]
+
+[project.scripts]
+run-agent = "inference:main"
